@@ -1,0 +1,23 @@
+<div class="container">
+    <form [formGroup]="form" (submit)="onSubmit($event)">
+
+        <input class="form-control" formControlName="gameName" type="text" placeholder="Game's name" aria-label="default input example">
+
+
+        <div class="form-group">
+            <button type="button" class="btn btn-success" (click)="addUrlInput()">Add input</button>
+
+            <div formArrayName="urls" *ngFor="let item of urls.controls; let i = index">
+                <div formGroupName="{{i}}" class="url-input">
+                    <input class="form-control" formControlName="url"  type="text" placeholder="Paste here website Url" aria-label="default input example">
+                    <button type="button" class="btn btn-danger" (click)="removeUrlInput(i)">-</button>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-dark">Submit</button>
+
+    </form>
+</div>
+
+
